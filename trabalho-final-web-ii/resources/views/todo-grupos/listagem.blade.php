@@ -6,7 +6,7 @@
 
 @section('conteudo')
         <h1 class="text-center">Grupos de To-dos </h1>
-        <button onclick="#" class="btn btn-outline-success align-right">Novo Grupo</button>
+        <a href="{{ route("grupos.create") }}" class="btn btn-outline-success align-right">Novo Grupo</a>
     <hr>
     <table class="table table-striped table-dark">
         <thead>
@@ -26,8 +26,8 @@
                     <td>{{$g->description}}</td>
                     <td>{{$g->created_at}}</td>
                     <td>
-                        <button onclick="#" class="btn btn-outline-info">Editar</button>
-                        <button onclick="#" class="btn btn-outline-danger">Remover</button>
+                        <a href="{{ route("grupos.edit", $g->id) }}" class="btn btn-outline-info">Editar</a>
+                        <a href="{{ route("grupos.remove", $g->id) }}" class="btn btn-outline-danger">Remover</a>
                     </td>
             @endforeach
         </tbody>
