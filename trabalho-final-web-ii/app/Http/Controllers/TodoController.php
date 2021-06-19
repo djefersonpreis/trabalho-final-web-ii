@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Routing\Controller as Controller;
 use Illuminate\Support\Facades\DB;
+use App\Models\TodoComment;
 use App\Models\TodoGrupo;
 use App\Models\Todo;
 
@@ -15,8 +16,25 @@ class TodoController extends Controller {
     public function index() {
         if(view()->exists('todo.index')) {
             return view('todo.index', [
-                'grupos' => TodoGrupos::get(),
+                'grupos' => TodoGrupo::get(),
                 'todos' => Todo::get()
+            ]);
+        } else {
+            return 'Página não encontrada';
+        }
+    }
+
+    public function detail($todo_id) {
+        if(view()->exists('todo.detail')) {
+
+            $todo = Todo::where('id', $todo_id)->get()->first();
+            $grupo = TodoGrupo::where('id', $todo->todo_grupos_id)->get()->first();
+            $comments = TodoComment::where('todo_id', $todo_id)->get();
+
+            return view('todo.detail', [
+                'todo'      => $todo,
+                'grupo'     => $grupo,
+                'comments'  => $comments
             ]);
         } else {
             return 'Página não encontrada';
@@ -26,7 +44,7 @@ class TodoController extends Controller {
     public function create() {
         if(view()->exists('todo.create')) {
             return view('todo.create', [
-                'grupos' => TodoGrupos::get()
+                'grupos' => TodoGrupo::get()
             ]);
         } else {
             return 'Página não encontrada';
@@ -44,7 +62,7 @@ class TodoController extends Controller {
 
             return view('todo.edit', [
                 'todo' => $todo,
-                'grupos' => TodoGrupos::get()
+                'grupos' => TodoGrupo::get()
             ]);
         } else {
             return 'Página não encontrada';
