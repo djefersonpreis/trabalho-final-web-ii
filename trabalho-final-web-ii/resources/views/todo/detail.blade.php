@@ -6,7 +6,7 @@
 
 @section('conteudo')
     <h1 class="text-center">Detalhamento da Pendência #{{ $todo->id }}</h1>
-    <a href="{{ route("todo.index") }}" class="btn btn-outline-success align-right">Voltar</a>
+    <a href="{{ route("todo.index") }}" class="btn btn-outline-warning">Voltar</a>
     <hr>
     <section>
         <h2>{{ $todo->title }}</h2>

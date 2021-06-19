@@ -5,8 +5,9 @@
 @stop
 
 @section('conteudo')
-        <h1 class="text-center">Grupos de To-dos </h1>
-        <a href="{{ route("grupos.create") }}" class="btn btn-outline-success align-right">Novo Grupo</a>
+    <h1 class="text-center">Grupos de To-dos </h1>
+    <a href="{{ route("todo.index") }}" class="btn btn-outline-warning">Voltar</a>
+    <a href="{{ route("grupos.create") }}" class="btn btn-outline-success align-right">Novo Grupo</a>
     <hr>
     <table class="table table-striped table-dark">
         <thead>

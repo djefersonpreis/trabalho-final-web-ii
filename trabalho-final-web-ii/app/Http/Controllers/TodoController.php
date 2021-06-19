@@ -15,9 +15,12 @@ class TodoController extends Controller {
 
     public function index() {
         if(view()->exists('todo.index')) {
+
+            $todos = Todo::join('todo_groups', 'todo.todo_groups_id', '=', 'todo_groups.id')
+                    ->select('todo.id', 'todo.title', 'todo.description', 'todo.status', 'todo.date_todo', 'todo_groups.name')->get();
+
             return view('todo.index', [
-                'grupos' => TodoGrupo::get(),
-                'todos' => Todo::get()
+                'todos'     => $todos
             ]);
         } else {
             return 'Página não encontrada';
@@ -29,7 +32,7 @@ class TodoController extends Controller {
 
             $todo = Todo::where('id', $todo_id)->get()->first();
             $grupo = TodoGrupo::where('id', $todo->todo_grupos_id)->get()->first();
-            $comments = TodoComment::where('todo_id', $todo_id)->get();
+            $comments = TodoComment::where('todo_id', $todo_id)->orderBy('created_at')->get();
 
             return view('todo.detail', [
                 'todo'      => $todo,
@@ -44,7 +47,7 @@ class TodoController extends Controller {
     public function create() {
         if(view()->exists('todo.create')) {
             return view('todo.create', [
-                'grupos' => TodoGrupo::get()
+                'grupos'    => TodoGrupo::get()
             ]);
         } else {
             return 'Página não encontrada';
@@ -61,8 +64,8 @@ class TodoController extends Controller {
             $todo = Todo::where("id", $todo_id)->get()->first();
 
             return view('todo.edit', [
-                'todo' => $todo,
-                'grupos' => TodoGrupo::get()
+                'todo'      => $todo,
+                'grupos'    => TodoGrupo::get()
             ]);
         } else {
             return 'Página não encontrada';

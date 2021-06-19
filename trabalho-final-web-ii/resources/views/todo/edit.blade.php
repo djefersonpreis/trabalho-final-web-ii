@@ -6,7 +6,7 @@
 
 @section('conteudo')
     <h1 class="text-center">Editar Pendência - #{{ $todo->id }}</h1>
-    <a href="{{ route("todo.index") }}" class="btn btn-outline-success">Voltar</a>
+    <a href="{{ route("todo.index") }}" class="btn btn-outline-warning">Voltar</a>
     <hr>
 
     <div class="row justify-content-center">
@@ -19,18 +19,18 @@
                 </div>
                 <div class="form-group">
                     <label for="title">Título:</label>
-                    <input type="text" class="form-control" id="title" name="title" value="{{ $todo->title }}">
+                    <input type="text" class="form-control" id="title" name="title" value="{{ $todo->title }}" maxlength="200">
                 </div>
                 <br/>
                 <div class="form-group">
                     <label for="description">Descrição da pendência:</label>
-                    <textarea rows="5" cols="50" class="form-control" id="description" name="description">{{ $todo->description }}</textarea>
+                    <textarea rows="5" cols="50" class="form-control" id="description" name="description" maxlength="3000">{{ $todo->description }}</textarea>
                 </div>
                 <br/>
                 <div class="row">
                     <div class="col-sm-12 col-md-6 form-group">
                         <label for="status">Status da Pendência: </label>
-                        <input type="text" class="form-control" id="status" name="status" value="{{ $todo->status }}">
+                        <input type="text" class="form-control" id="status" name="status" value="{{ $todo->status }}" maxlength="40">
                     </div>
                     <div class="col-sm-12 col-md-6 form-group">
                         <label for="date_todo">Data Limite:</label>

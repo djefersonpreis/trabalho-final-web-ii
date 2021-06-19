@@ -6,7 +6,7 @@
 
 @section('conteudo')
     <h1 class="text-center">Nova Pendência</h1>
-    <a href="{{ route("todo.index") }}" class="btn btn-outline-success">Voltar</a>
+    <a href="{{ route("todo.index") }}" class="btn btn-outline-warning">Voltar</a>
     <hr>
 
     <div class="row justify-content-center">
@@ -15,18 +15,18 @@
                 @csrf
                 <div class="form-group">
                     <label for="title">Título:</label>
-                    <input type="text" class="form-control" id="title" name="title" placeholder="Título">
+                    <input type="text" class="form-control" id="title" name="title" placeholder="Título" maxlength="200">
                 </div>
                 <br/>
                 <div class="form-group">
                     <label for="description">Descrição da pendência:</label>
-                    <textarea rows="5" cols="50" class="form-control" id="description" name="description" placeholder="Descrição..."></textarea>
+                    <textarea rows="5" cols="50" class="form-control" id="description" name="description" placeholder="Descrição..." maxlength="3000"></textarea>
                 </div>
                 <br/>
                 <div class="row">
                     <div class="col-sm-12 col-md-6 form-group">
                         <label for="status">Status da Pendência: </label>
-                        <input type="text" class="form-control" id="status" name="status" placeholder="A fazer...">
+                        <input type="text" class="form-control" id="status" name="status" placeholder="A fazer..." maxlength="40">
                     </div>
                     <div class="col-sm-12 col-md-6 form-group">
                         <label for="date_todo">Data Limite:</label>
