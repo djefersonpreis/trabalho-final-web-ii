@@ -1,3 +1,27 @@
+<!-- Modal para edição do Comentário #{{$comment->id}}: -->
+<div class="modal fade" id="editModal{{$comment->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Editar Comentário #{{ $comment->id }}</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="{{ route("comment.update", ['todo_id'=>$comment->todo_id, 'comment_id'=>$comment->id]) }}">
+                    @csrf
+                    <div class="form-group">
+                        <textarea rows="5" cols="50" class="form-control" id="comment" name="comment" maxlength="3000">{{ $comment->comment }}</textarea>
+                    </div>
+                    <input type="hidden" id="todo_id" name="todo_id" value="{{ $comment->todo_id }}"/>
+                    <br/>
+                    <button type="submit" class="btn btn-outline-success">Alterar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Card do Comentário #{{$comment->id}}: -->
 <div class="col-12 mt-3">
     <div class="card text-white bg-secondary mb-3">
         <div class="card-header">
@@ -13,8 +37,8 @@
                     </p>
                 </div>
                 <div>
-                    <button href="{{ route("todo.edit",  $comment->id) }}" class="btn btn-outline-info"><i class="fa fa-pen"></i></button>
-                    <button href="{{ route("comment.remove", ['todo_id' => $comment->todo_id, 'comment_id' => $comment->id]) }}" class="btn btn-outline-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                    <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#editModal{{$comment->id}}">tete</button>
+                    <a href="{{ route('comment.remove', ['todo_id'=>$comment->todo_id, 'comment_id'=>$comment->id]) }}" class="btn btn-outline-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>
@@ -23,3 +47,5 @@
         </div>
     </div>
 </div>
+
+

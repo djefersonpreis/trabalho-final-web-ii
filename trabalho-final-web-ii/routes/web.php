@@ -32,6 +32,5 @@ Route::get('/remove/{todo_id}',                     [TodoController::class, 'rem
 
 Route::get('/detail/{todo_id}',                     [TodoController::class, 'detail'])          ->name('todo.detail')       ->where('todo_id', '[0-9]+');
 Route::post('/detail/{todo_id}',                    [TodoCommentController::class, 'store'])    ->name('comment.store')     ->where('todo_id', '[0-9]+');
-Route::get('/detail/{todo_id}/edit/{comment_id}',   [TodoCommentController::class, 'edit'])     ->name('comment.edit')      ->where(['todo_id' => '[0-9]+', 'comment_id' => '[0-9]+']);
 Route::post('/detail/{todo_id}/update/{comment_id}',[TodoCommentController::class, 'update'])   ->name('comment.update')    ->where(['todo_id' => '[0-9]+', 'comment_id' => '[0-9]+']);
 Route::get('/detail/{todo_id}/remove/{comment_id}', [TodoCommentController::class, 'remove'])   ->name('comment.remove')    ->where(['todo_id' => '[0-9]+', 'comment_id' => '[0-9]+']);

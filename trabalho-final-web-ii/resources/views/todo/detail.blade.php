@@ -50,7 +50,7 @@
             @csrf
             <div class="form-group">
                 <h5><label for="comment">Novo Comentário:</label></h5>
-                <textarea rows="5" cols="50" class="form-control" id="comment" name="comment" placeholder="Escreva aqui um novo comentário..."></textarea>
+                <textarea rows="5" cols="50" class="form-control" id="comment" name="comment" placeholder="Escreva aqui um novo comentário..." maxlength="3000"></textarea>
             </div>
             <input type="hidden" id="todo_id" name="todo_id" value="{{ $todo->id }}"/>
             <br/>
