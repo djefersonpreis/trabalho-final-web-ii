@@ -4,18 +4,19 @@
             {{ $todo->name }}
         </div>
         <div class="card-body">
-            <h5 class="card-title text-capitalize">{{ $todo->title }}</h5>
+            <div class="text-center">
+                <h5 class="card-title text-capitalize text-truncate">{{ $todo->title }}</h5>
+                <small class="text-muted">{{ $todo->date_todo }}</small>
+            </div>
             <hr>
             <p style="height: 150px" class="card-text overflow-hidden text-justify">{{ $todo->description }}</p>
         </div>
         <div class="card-footer">
-            <div class="row">
-                <a href="{{ route("todo.detail", $todo->id) }}" class="btn btn-outline-success">Detalhamento</a>
-            </div>
-            <br>
-            <div class="row">
-                <a href="{{ route("todo.edit", $todo->id) }}" class="col-5 btn btn-outline-info">Editar</a>
-                <a href="{{ route("todo.remove", $todo->id) }}" class="col-5 offset-2 btn btn-outline-danger float-right">Remover</a>
+            <div class="row d-flex justify-content-center">
+                <a href="{{ route("todo.detail", $todo->id) }}" class="col-11 m-2 btn btn-outline-success mb-2">Detalhamento</a>
+                <br>
+                <a href="{{ route("todo.edit", $todo->id) }}" class="col-5 m-2 btn btn-outline-info">Editar</a>
+                <a href="{{ route("todo.remove", $todo->id) }}" class="col-5 m-2 btn btn-outline-danger">Remover</a>
             </div>
         </div>
     </div>
