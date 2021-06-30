@@ -78,6 +78,7 @@ class TodoController extends Controller {
     }
 
     public function remove($todo_id){
+        TodoComment::where("todo_id", $todo_id)->delete();
         Todo::where("id", $todo_id)->delete();
         return redirect(route("todo.index"));
     }

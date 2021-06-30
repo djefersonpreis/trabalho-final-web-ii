@@ -37,7 +37,7 @@
                     </p>
                 </div>
                 <div>
-                    <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#editModal{{$comment->id}}">tete</button>
+                    <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#editModal{{$comment->id}}"><i class="fa fa-pen" aria-hidden="true"></i></button>
                     <a href="{{ route('comment.remove', ['todo_id'=>$comment->todo_id, 'comment_id'=>$comment->id]) }}" class="btn btn-outline-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
                 </div>
             </div>
